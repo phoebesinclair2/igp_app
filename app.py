@@ -115,13 +115,13 @@ if st.session_state.submitted:
     st.map({"lat": [st.session_state.lat], "lon": [st.session_state.lon]})
 
     if add_weather == "Yes" and st.session_state.weather_data is not None:
-        st.write("📊 **Weather Data:**")
+        st.write("**Weather Data Sample (hourly):**")
         st.dataframe(st.session_state.weather_data.head())  # Show first few rows
 
         # Allow user to download the data
         csv = st.session_state.weather_data.to_csv(index=False).encode("utf-8")
-        st.download_button("📥 Download Weather Data", data=csv, file_name="weather_data.csv", mime="text/csv")
+        st.download_button("📥 Download Full Weather Data", data=csv, file_name="weather_data.csv", mime="text/csv")
 
     # Button to edit trial information
-    if st.button("🔄 Edit Trial Info"):
+    if st.button("🔄 Reset form"):
         st.session_state.submitted = False  # Reset the form to allow editing
