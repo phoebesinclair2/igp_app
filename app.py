@@ -78,8 +78,10 @@ trial_end_date = st.date_input("📅 Select Trial End Date", min_value=trial_sta
 # Postcode Input
 postcode = st.text_input("Enter the Postcode", placeholder="e.g. BS1 1AA (UK)")
 
+# Upload or select sensor data (LINK TO CSV UPLOADER)
+
 # Add Weather Data Option
-add_weather = st.radio("Would you like to add weather data from open meteo?", ["No", "Yes"])
+add_weather = st.radio("Would you like to add hourly weather data from open meteo?", ["No", "Yes"])
 
 # Submit Button
 if st.button("Submit Trial Info"):
