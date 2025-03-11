@@ -7,6 +7,8 @@ from geopy.exc import GeocoderTimedOut
 import openmeteo_requests
 from retry_requests import retry
 
+# reminder of bash command to run app: streamlit run app.py
+
 # Setup Open-Meteo API client with cache and retry on error
 cache_session = requests_cache.CachedSession('.cache', expire_after=3600)
 retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
@@ -64,20 +66,20 @@ if "weather_data" not in st.session_state:
     st.session_state.weather_data = None
 
 # Streamlit App UI
-st.title("🔬 Trial Data Entry Form")
+st.title("Trial Data Entry Form")
 
 # Trial Name Input
-trial_name = st.text_input("Enter the Trial Name", placeholder="e.g., Greenhouse Test A")
+trial_name = st.text_input("Enter the Trial Name", placeholder="e.g. Greenhouse Test A")
 
 # Trial Start & End Dates
 trial_start_date = st.date_input("📅 Select Trial Start Date", min_value=date(2000, 1, 1))
 trial_end_date = st.date_input("📅 Select Trial End Date", min_value=trial_start_date)
 
 # Postcode Input
-postcode = st.text_input("Enter the Postcode", placeholder="e.g., SW1A 1AA (UK) or 10001 (US)")
+postcode = st.text_input("Enter the Postcode", placeholder="e.g. BS1 1AA (UK)")
 
 # Add Weather Data Option
-add_weather = st.radio("Would you like to add weather data?", ["No", "Yes"])
+add_weather = st.radio("Would you like to add weather data from open meteo?", ["No", "Yes"])
 
 # Submit Button
 if st.button("Submit Trial Info"):
